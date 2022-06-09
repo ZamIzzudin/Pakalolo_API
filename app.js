@@ -8,11 +8,19 @@ const app = express();
 
 const router = require('./routes');
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://pakalolo.netlify.app/'
+}));
+
 app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 app.get('', (req, res) => {
     res.send({
