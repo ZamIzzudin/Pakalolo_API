@@ -1,19 +1,12 @@
 const mysql = require('mysql');
-
-// const conn = mysql.createConnection({
-//     host: 'sql6.freesqldatabase.com',
-//     user: 'sql6490978',
-//     password: 'ijUktq1qmU',
-//     database: 'sql6490978',
-//     port: 3306
-// })
+require('dotenv').config();
 
 const conn = mysql.createConnection({
-    host: 'sql6.freemysqlhosting.net',
-    user: 'sql6498424',
-    password: 'i6CavtqFW9',
-    database: 'sql6498424',
-    port: 3306
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 })
 
 conn.connect((err) => {
