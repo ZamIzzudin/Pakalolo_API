@@ -51,8 +51,9 @@ exports.update = function (req, res) {
 }
 
 exports.getOne = function (req, res) {
+    console.log(req.params.id_barang)
     conn.query(
-        'SELECT barang.id, barang.nama, barang.harga, barang.kategori, barang.thumbnail, barang.stok, barang.deskripsi, AVG(rating.rate) AS rating FROM barang INNER JOIN pembelian ON pembelian.id_barang = barang.id INNER JOIN rating ON rating.id_pembelian = pembelian.id WHERE barang.id = ?',
+        'SELECT id, nama, harga, kategori, thumbnail, stok, deskripsi FROM barang WHERE id = ?',
         [req.params.id_barang],
         (err, result) => {
             res.json({
