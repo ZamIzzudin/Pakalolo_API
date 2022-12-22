@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const port = process.env.PORT || 8080;
 const app = express();
 
-const router = require('./routes');
+const router = require('./src/routes');
 
 app.use(cors());
 
